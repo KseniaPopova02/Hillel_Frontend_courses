@@ -32,8 +32,8 @@ console.log(newArr.sort((a, b) => a - b));
 
 const pos = 2, n = 2;
 
-let newNumArr = numArr.splice(pos, n)
-console.log(numArr)
+let newNumArr = numArr.splice(pos, n);
+console.log(numArr);
 
 
 
