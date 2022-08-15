@@ -58,17 +58,8 @@ userInfo = [
 
  console.log(userInfoBalance);
 
-//  function sumBalance(userInfo) {
-//     let sum = 0;
-//     for (let balance of Object.values(userInfo)) {
-//         sum += balance;
-//     }
-
-//     return sum;
-//  }
-
-const sumOfBalance = userInfo.reduce((a, b) => {
-    return a + Number(b.balance.replace('$', '').replace(',', ''));
+const sumOfBalance = userInfo.reduce((total, user) => {
+    return total + Number(user.balance.replace('$', '').replace(',', ''));
 }, 0);
 
  console.log(sumOfBalance);
