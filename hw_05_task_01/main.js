@@ -21,28 +21,28 @@ userInfo = [
       phone: "+1 (840) 333-5400",
     },
     {
-      index: 2,
+      index: 3,
       isActive: true,
       name: "Stan Smith",
       balance: "$5,001.50",
       phone: "+1 (839) 121-3044",
     },
     {
-      index: 3,
+      index: 4,
       isActive: true,
       name: "Johnathan Tape",
       balance: "$3,020.60",
       phone: "+1 (839) 003-5579",
     },
     {
-      index: 4,
+      index: 5,
       isActive: true,
       name: "Aaron Big",
       balance: "$1,999.99",
       phone: "+1 (840) 033-6873",
     },
     {
-      index: 5,
+      index: 6,
       isActive: true,
       name: "Arthur Cheese",
       balance: "$2,545.00",
@@ -50,16 +50,18 @@ userInfo = [
     },
   ];
 
+  const userInfoBalance = userInfo.filter(function (userInfoItem) {
+    if (userInfoItem.balance.replace('$', '').replace(',', '') > 2000) {
+      return true;
+    }
+}).map(function (userInfoItem) {
+    return userInfoItem.phone;
+});
 
- const userInfoBalance = userInfo.filter(function (userInfoItem) {
-    return userInfoItem.balance.replace('$', '').replace(',', '') > 2000;
-
- });
-
- console.log(userInfoBalance);
+console.log(userInfoBalance);
 
 const sumOfBalance = userInfo.reduce((total, user) => {
     return total + Number(user.balance.replace('$', '').replace(',', ''));
 }, 0);
 
- console.log(sumOfBalance);
+console.log(sumOfBalance);
