@@ -1,0 +1,10 @@
+tr,
+td {
+  border: solid #000 2px;
+  font-size: 50px;
+}
+
+table {
+  margin: auto;
+  border-spacing: 10px;
+}

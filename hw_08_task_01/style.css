@@ -1,0 +1,26 @@
+body {
+  background-color: #fe66ad;
+}
+
+.paragraph {
+  text-align: center;
+  font-size: 25px;
+}
+
+.paragraph.white {
+  color: white;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.btn:hover {
+  border-color: #fff;
+}

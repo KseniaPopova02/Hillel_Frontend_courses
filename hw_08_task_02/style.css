@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+}
+.btn {
+  display: block;
+  margin: 200px auto;
+}
