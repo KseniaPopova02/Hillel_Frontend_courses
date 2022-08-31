@@ -18,6 +18,16 @@ function createDeleteEl(value) {
   li.textContent = value;
   list.appendChild(li);
 
+  const checkBox = document.createElement("input");
+  checkBox.className = "check__box";
+  checkBox.setAttribute("type", "checkbox");
+  li.appendChild(checkBox);
+
+  // add crossed text
+  checkBox.addEventListener("click", (e) => {
+    li.classList.toggle("crossed_text");
+  });
+
   const btn = document.createElement("i");
   btn.className = "fa-solid fa-trash-can";
   li.appendChild(btn);
