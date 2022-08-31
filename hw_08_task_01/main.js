@@ -15,7 +15,5 @@ const button = document.querySelector(".btn");
 // button.addEventListener("click", changeColorWhite);
 
 button.onclick = function () {
-  //   changeColorBlack();
-  //   changeColorW();
   paragraph.classList.toggle("white");
 };

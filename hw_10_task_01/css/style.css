@@ -1,0 +1,62 @@
+body {
+  background-color: #e3e8fc;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container {
+  margin: 30px 150px;
+}
+
+.to__do-list {
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+}
+.title__text {
+  margin-right: 20px;
+}
+
+.input__wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input__text {
+  border: 2px solid #e3e8fc;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+.btn__add {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #a680e3;
+  color: #fff;
+}
+
+.btn__add:hover {
+  background-color: #8e6ec0;
+}
+
+.action__list {
+  margin-left: 60px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.li {
+  padding-right: 115px;
+  padding-bottom: 20px;
+}
+
+.fa-solid {
+  cursor: pointer;
+  padding-left: 115px;
+}
