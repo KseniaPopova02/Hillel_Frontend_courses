@@ -58,14 +58,20 @@ body {
 
 .fa-solid {
   cursor: pointer;
-  padding-left: 115px;
+  padding-left: 15px;
 }
 
 .check__box {
-  padding-left: 25px;
+  margin-right: 25px;
   cursor: pointer;
 }
 
 .li.crossed_text {
   text-decoration: line-through;
+}
+
+.li span {
+  width: 100px;
+  display: inline-block;
+  overflow-wrap: break-word;
 }

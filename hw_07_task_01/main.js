@@ -25,22 +25,26 @@ function assignOwner(customer) {
     return;
   }
 
-  const age = prompt("Enter your age:");
-  checkAge(age);
-  function checkAge(age) {
-    console.log(!isNaN(age));
-    while (isNaN()) {
+  function checkAge() {
+    let age = prompt("Enter your age:");
+
+    while (isNaN(age)) {
       alert("Please enter a number");
-      prompt("Enter your age:");
+      age = prompt("Enter your age:");
     }
-    if (!age) {
-      console.log("wrong data");
-      return;
-    }
-    if (age < 18) {
-      console.log("so young");
-      return;
-    }
+
+    return age;
+  }
+
+  const age = checkAge();
+
+  if (!age) {
+    console.log("wrong data");
+    return;
+  }
+  if (age < 18) {
+    console.log("so young");
+    return;
   }
 
   const customer = new User(name, age);

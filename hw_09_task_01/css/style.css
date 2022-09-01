@@ -46,3 +46,7 @@ img {
 .slide.opacity0 {
   opacity: 0;
 }
+
+.content {
+  width: 100%;
+}

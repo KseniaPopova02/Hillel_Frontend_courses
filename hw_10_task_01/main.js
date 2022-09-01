@@ -3,25 +3,40 @@ const input = document.querySelector(".input__text");
 const btn = document.querySelector(".btn__add");
 const list = document.querySelector(".action__list");
 
-btn.addEventListener("click", (e) => {
-  //   list.innerHTML += `<li>${input.value}</li>`;
+const addToList = () => {
   if (input.value === "") return;
   createDeleteEl(input.value);
   input.value = "";
+};
+
+btn.addEventListener("click", addToList);
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addToList();
+  }
 });
+
 // create and delete items
 function createDeleteEl(value) {
   console.log(value);
 
   const li = document.createElement("li");
   li.className = "li";
-  li.textContent = value;
   list.appendChild(li);
+
+  const div = document.createElement("div");
+  div.className = "div";
+  li.appendChild(div);
 
   const checkBox = document.createElement("input");
   checkBox.className = "check__box";
   checkBox.setAttribute("type", "checkbox");
-  li.appendChild(checkBox);
+  div.appendChild(checkBox);
+
+  const span = document.createElement("span");
+  span.textContent = value;
+  div.appendChild(span);
 
   // add crossed text
   checkBox.addEventListener("click", (e) => {
@@ -30,7 +45,7 @@ function createDeleteEl(value) {
 
   const btn = document.createElement("i");
   btn.className = "fa-solid fa-trash-can";
-  li.appendChild(btn);
+  div.appendChild(btn);
   //   remove items
   btn.addEventListener("click", (e) => {
     list.removeChild(li);
