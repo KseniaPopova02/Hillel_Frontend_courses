@@ -40,7 +40,7 @@ function createDeleteEl(value) {
 
   // add crossed text
   checkBox.addEventListener("click", (e) => {
-    li.classList.toggle("crossed_text");
+    span.classList.toggle("crossed__text");
   });
 
   const btn = document.createElement("i");
