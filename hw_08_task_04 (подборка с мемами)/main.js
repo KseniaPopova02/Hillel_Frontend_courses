@@ -13,3 +13,5 @@ document.querySelector(".btn__random").addEventListener("click", function () {
   offset = Math.floor(Math.random() * 7) * -250;
   sliderLine.style.left = offset + "px";
 });
+
+console.log(Math.sqrt(433));
