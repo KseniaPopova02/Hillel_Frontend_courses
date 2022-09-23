@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="main.js"></script>
   </head>
   <body>
     <div class="container">
@@ -27,34 +28,19 @@
         </div>
         <div class="menu">
           <div class="menu__wrapper">
-            <div class="button__all">
-              <button class="button">All</button>
-            </div>
-            <div class="button__inprogress">
-              <button class="button">In progress</button>
-            </div>
-            <div class="button__completed">
-              <button class="button">Completed</button>
-            </div>
+            <button class="button active" data-type="all">All</button>
+            <button class="button" data-type="inprogress">In progress</button>
+            <button class="button" data-type="completed">Completed</button>
           </div>
         </div>
-        <div class="input__wrapper">
+        <form action="#" class="input__wrapper">
           <input type="text" placeholder="Add a task" class="input__text" />
-          <button class="btn__add">ADD</button>
-        </div>
+          <button type="submit" class="btn__add">ADD</button>
+        </form>
         <div class="list">
-          <ul class="action__list">
-            <!-- <li class="li">
-              <div class="div">
-                <input type="checkbox" class="check__box" />
-                <span>Bread</span>
-                <i class="fa-solid fa-trash-can"></i>
-              </div>
-            </li> -->
-          </ul>
+          <ul class="action__list"></ul>
         </div>
       </div>
     </div>
-    <script src="main.js"></script>
   </body>
 </html>

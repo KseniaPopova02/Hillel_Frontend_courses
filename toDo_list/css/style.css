@@ -32,6 +32,7 @@ body {
   background-color: #fff;
   border-radius: 10px;
   padding: 15px;
+  margin: 0 auto;
 }
 
 .title {
@@ -76,6 +77,11 @@ body {
   padding-bottom: 20px;
 }
 
+.li .div {
+  display: flex;
+  align-items: flex-start;
+}
+
 .fa-solid {
   cursor: pointer;
   padding-left: 15px;
@@ -94,4 +100,8 @@ span.crossed__text {
   width: 100px;
   display: inline-block;
   overflow-wrap: break-word;
+}
+
+.active {
+  text-decoration: underline;
 }
