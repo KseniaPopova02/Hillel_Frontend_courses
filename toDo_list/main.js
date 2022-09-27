@@ -1,5 +1,5 @@
 //variables
-let input, btn, list, form;
+let input, btn, list, form, clearBtn;
 
 //create an array of todo list items
 let items = [];
@@ -16,7 +16,7 @@ const createItem = (text) => {
 
   const max = Math.max(...ids);
 
-  let arrItems = items.push({
+  items.push({
     id: max + 1,
     text: text,
     isDone: false,
@@ -47,7 +47,26 @@ const checkedItem = (id, checked) => {
 
 //Render list
 
+//Local storage
+
+const toLocalStorage = () => {
+  localStorage.setItem("data", JSON.stringify(items));
+};
+
+const loadLocalStorage = () => {
+  let rawData = localStorage.getItem("data");
+  items = JSON.parse(rawData);
+  renderList();
+};
+
+const deleteLocalStorage = () => {
+  localStorage.clear();
+  items = [];
+  renderList();
+};
+
 const renderList = () => {
+  toLocalStorage();
   list.textContent = "";
 
   items.forEach((item) => {
@@ -104,12 +123,6 @@ const renderList = () => {
   });
 };
 
-//Local storage
-
-const toLocalStorage = () => {
-  localStorage.setItem("data");
-};
-
 //Add to list
 const addToList = () => {
   if (input.value === "") return;
@@ -128,10 +141,16 @@ window.addEventListener("DOMContentLoaded", () => {
   input = document.querySelector(".input__text");
   list = document.querySelector(".action__list");
   form = document.querySelector(".input__wrapper");
+  clearBtn = document.querySelector(".btn__clear");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     addToList();
+  });
+
+  clearBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    deleteLocalStorage();
   });
   //List type button click
   const listTypeBtn = document.querySelectorAll(".menu .button");
@@ -145,4 +164,5 @@ window.addEventListener("DOMContentLoaded", () => {
       renderList();
     });
   });
+  loadLocalStorage();
 });
