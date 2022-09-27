@@ -7,13 +7,16 @@ let listType = "all";
 
 //create function
 const createItem = (text) => {
-  const ids = items.map((item) => {
-    return item.id;
-  });
+  const ids = [
+    0,
+    ...items.map((item) => {
+      return item.id;
+    }),
+  ];
 
   const max = Math.max(...ids);
 
-  items.push({
+  let arrItems = items.push({
     id: max + 1,
     text: text,
     isDone: false,
@@ -32,7 +35,6 @@ const deleteItem = (id) => {
 };
 
 //checked function
-
 const checkedItem = (id, checked) => {
   items.forEach((item) => {
     if (item.id === id) {
@@ -102,6 +104,12 @@ const renderList = () => {
   });
 };
 
+//Local storage
+
+const toLocalStorage = () => {
+  localStorage.setItem("data");
+};
+
 //Add to list
 const addToList = () => {
   if (input.value === "") return;
@@ -126,9 +134,9 @@ window.addEventListener("DOMContentLoaded", () => {
     addToList();
   });
   //List type button click
-  const listTypeBtns = document.querySelectorAll(".menu .button");
+  const listTypeBtn = document.querySelectorAll(".menu .button");
 
-  listTypeBtns.forEach((listTypeBtn) => {
+  listTypeBtn.forEach((listTypeBtn) => {
     listTypeBtn.addEventListener("click", (e) => {
       makeBtnActive(e.target);
 
