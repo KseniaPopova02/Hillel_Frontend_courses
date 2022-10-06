@@ -14,23 +14,58 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="wrapper"></div>
-    <div class="form__wrapper">
-      <form action="#">
-        <div class="input__wrapper">
-          <label for="fname">First name:</label><br />
-          <input type="text" id="fname" name="fname" /><br />
-          <label for="lname">Last name:</label><br />
-          <input type="text" id="lname" name="lname" /><br />
-          <label for="age">Age:</label><br />
-          <input type="number" id="age" name="age" /><br />
-          <label for="tel">Telephone number:</label><br />
-          <input type="tel" id="tel" name="tel" /><br />
+    <div class="container">
+      <div class="wrapper">
+        <div class="form__wrapper">
+          <form action="#" class="input__wrapper">
+            <label for="fname">First name:</label><br />
+            <input id="input__person" type="text" id="fname" name="fname" /><br />
+            <label for="lname">Last name:</label><br />
+            <input id="input__person" type="text" id="lname" name="lname" /><br />
+            <label for="age">Age:</label><br />
+            <input id="input__person" type="number" id="age" name="age" /><br />
+            <label for="tel">Telephone number:</label><br />
+            <input id="input__person" type="tel" id="tel" name="tel" /><br />
+            <input
+              id="submitPerson"
+              class="submit__btn"
+              type="submit"
+              value="Submit"
+            />
+          </form>
         </div>
 
-        <!-- Car form -->
+        <!-- Table -->
 
-        <div class="input__wrapper">
+        <div class="table__wrapper">
+          <table>
+            <tr>
+              <td>First name</td>
+              <td>Last name</td>
+              <td>Age</td>
+              <td>Phone number</td>
+              <td>Car brand</td>
+              <td>Car color</td>
+              <td>Car year</td>
+              <td>Delete or edit</td>
+            </tr>
+            <tr>
+              <td class="td__fname"></td>
+              <td class="td__lname"></td>
+              <td class="td__age"></td>
+              <td class="td__phone"></td>
+              <td class="td__car"></td>
+              <td class="td__car-color"></td>
+              <td class="td__car-year"></td>
+              <td class="td__icons"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Car form -->
+      <div class="form__wrapper">
+        <form action="" class="input__wrapper"></form>
           <label for="brand">Car brand:</label><br />
           <input type="text" id="brand" name="brand" /><br />
           <label for="color">Car color:</label><br />
@@ -38,13 +73,12 @@
           <label for="year">Car year:</label><br />
           <input type="number" id="year" name="year" /><br />
           <input class="submit__btn" type="submit" value="Submit" />
-        </div>
-      </form>
+        </form>
+      </div>
 
       <div class="table__wrapper"></div>
-    </div>
-    <script src="main.js"></script>
 
-    <!-- Table -->
+      <script src="main.js"></script>
+    </div>
   </body>
 </html>
