@@ -36,8 +36,14 @@
 
         <form action="#" class="input__wrapper">
           <input type="text" placeholder="Add a task" class="input__text" />
-          <button type="submit" class="btn btn__add">ADD</button>
-          <button type="submit" class="btn btn__clear">CLEAR ALL</button>
+          <button type="submit" class="btn btn__add">
+            <span class="hide__onmobile show__ontablet">ADD</span>
+            <i class="fa-solid fa-plus show__onmobile hide__ontablet"></i>
+          </button>
+          <button type="submit" class="btn btn__clear">
+            <span class="hide__onmobile show__ontablet">CLEAR</span>
+            <i class="fa-solid fa-trash-can show__onmobile hide__ontablet"></i>
+          </button>
         </form>
 
         <div class="list">

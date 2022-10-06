@@ -55,8 +55,10 @@ const toLocalStorage = () => {
 
 const loadLocalStorage = () => {
   let rawData = localStorage.getItem("data");
-  items = JSON.parse(rawData);
-  renderList();
+  if (rawData) {
+    items = JSON.parse(rawData);
+    renderList();
+  }
 };
 
 const deleteLocalStorage = () => {
@@ -80,46 +82,48 @@ const renderList = () => {
       showItem = false;
     }
 
-    if (showItem) {
-      const li = document.createElement("li");
-      li.className = "li";
-      list.appendChild(li);
-
-      const div = document.createElement("div");
-      div.className = "div";
-      li.appendChild(div);
-
-      const checkBox = document.createElement("input");
-      checkBox.className = "check__box";
-      checkBox.setAttribute("type", "checkbox");
-      // If the item is done, set the checkbox to checked
-      if (item.isDone) {
-        checkBox.setAttribute("checked", "checked");
-      }
-
-      checkBox.addEventListener("change", (e) => {
-        checkedItem(item.id, checkBox.checked);
-      });
-
-      div.appendChild(checkBox);
-
-      const span = document.createElement("span");
-      span.textContent = item.text;
-
-      // If the item is done, add the 'crossed__text' class to the span
-      if (item.isDone) {
-        span.classList.add("crossed__text");
-      }
-
-      div.appendChild(span);
-
-      const btn = document.createElement("i");
-      btn.className = "fa-solid fa-trash-can";
-      div.appendChild(btn);
-      btn.addEventListener("click", (e) => {
-        deleteItem(item.id);
-      });
+    if (!showItem) {
+      return;
     }
+
+    const li = document.createElement("li");
+    li.className = "li";
+    list.appendChild(li);
+
+    const div = document.createElement("div");
+    div.className = "div";
+    li.appendChild(div);
+
+    const checkBox = document.createElement("input");
+    checkBox.className = "check__box";
+    checkBox.setAttribute("type", "checkbox");
+    // If the item is done, set the checkbox to checked
+    if (item.isDone) {
+      checkBox.setAttribute("checked", "checked");
+    }
+
+    checkBox.addEventListener("change", () => {
+      checkedItem(item.id, checkBox.checked);
+    });
+
+    div.appendChild(checkBox);
+
+    const span = document.createElement("span");
+    span.textContent = item.text;
+
+    // If the item is done, add the 'crossed__text' class to the span
+    if (item.isDone) {
+      span.classList.add("crossed__text");
+    }
+
+    div.appendChild(span);
+
+    const btn = document.createElement("i");
+    btn.className = "fa-solid fa-trash-can";
+    div.appendChild(btn);
+    btn.addEventListener("click", (e) => {
+      deleteItem(item.id);
+    });
   });
 };
 
