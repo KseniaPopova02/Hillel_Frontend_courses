@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regexp-form</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="regexp-form__wrapper">
+      <form id="regexpForm" class="regexp-form__form" name="regexpForm">
+        <h2 class="regexp-form__title">Form</h2>
+        <div class="regexp-form__item">
+          <label for="nameInput" class="regexp-form__label">Your name:</label>
+          <input
+            id="nameInput"
+            type="text"
+            class="regexp-form__input"
+            name="name"
+            placeholder="With a capital letter"
+            autocomplete="off"
+          />
+        </div>
+        <div class="regexp-form__item">
+          <label for="surnameInput" class="regexp-form__label"
+            >Your surname:</label
+          >
+          <input
+            id="surnameInput"
+            type="text"
+            class="regexp-form__input"
+            name="surname"
+            placeholder="With a capital letter"
+            autocomplete="off"
+          />
+        </div>
+        <div class="regexp-form__item">
+          <label for="numberInput" class="regexp-form__label"
+            >Your form number:</label
+          >
+          <input
+            id="numberInput"
+            type="tel"
+            class="regexp-form__input"
+            name="number"
+            value="+380"
+            maxlength="13"
+            autocomplete="off"
+          />
+        </div>
+        <div class="regexp-form__item">
+          <label for="emailInput" class="regexp-form__label">Email*:</label>
+          <input
+            id="emailInput"
+            type="text"
+            class="regexp-form__input"
+            name="email"
+            placeholder="example@gmail.com"
+            autocomplete="off"
+          />
+        </div>
+        <div class="regexp-form__item">
+          <label for="cardInput" class="regexp-form__label">Credit card:</label>
+          <input
+            id="cardInput"
+            type="number"
+            class="regexp-form__input"
+            name="card"
+            placeholder="16 values"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="regexp-form__button">Send</button>
+      </form>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
