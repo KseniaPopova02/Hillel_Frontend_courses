@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="weather__widget">
+      <h1 class="weather__city"></h1>
+      <div class="weather__widget-wrapper">
+        <div class="weatherLeft">
+          <div class="wetherLeft__date">
+            <p class="wetherLeft__date-title">Date:</p>
+            <div class="weatherLeft__current-date"></div>
+            <div class="weatherLeft__current-time"></div>
+          </div>
+          <p class="weatherLeft__info-title">Nobody actually cares:</p>
+          <div class="weatherLeft__humidity">
+            Humidity: <span class="weatherLeft__humidity-span"></span>
+          </div>
+          <div class="weatherLeft__pressure">
+            Pressure: <span class="weatherLeft__pressure-span"></span>
+          </div>
+          <div class="weatherLeft__wind">
+            Wind: <span class="weatherLeft__wind-span"></span>
+          </div>
+        </div>
+        <div class="weatherRight">
+          <p class="weatherRight__title">Weather:</p>
+          <div class="weatherRight__icon"></div>
+          <div class="weatherRight__temperature">
+            Temperature: <span class="weatherRight__temperature-span"></span>
+          </div>
+          <div class="weatherRight__current">
+            Current weather: <span class="weatherRight__current-span"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
