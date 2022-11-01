@@ -1,0 +1,53 @@
+.container {
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.post {
+  background-color: rgb(165, 226, 231);
+  border-radius: 6px;
+  padding: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+  &__form {
+    text-align: end;
+    margin-bottom: 20px;
+    &-input {
+      font-size: 18px;
+      border: 2px solid #fff;
+      border-radius: 6px;
+      padding: 5px;
+      &:hover {
+        border: 4px solid rgb(150, 206, 211);
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  &__body {
+    margin: 10px;
+    font-size: 20px;
+  }
+  &__comments {
+    border: 2px solid #fff;
+    margin: 10px;
+    font-size: 20px;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    &-span {
+      display: block;
+      text-transform: lowercase;
+      padding: 10px 10px 10px 0;
+    }
+  }
+}
