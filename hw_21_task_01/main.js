@@ -1,8 +1,21 @@
 const ALL_CATEGORIES_URL = "https://fakestoreapi.com/products/categories";
 const CATEGORY_URL = "https://fakestoreapi.com/products/category";
+const LIMITED_PRODUCTS_URL = "https://fakestoreapi.com/products?limit=5";
 
 const categoryList = document.getElementById("category__list");
 const productsList = document.getElementById("products__list");
+
+const spinner = document.querySelector(".card__loading");
+
+const request = {
+  get: (url) => {
+    return fetch(url)
+      .then((res) => res.json())
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  },
+};
 
 const createElement = (tagName, attributes, text) => {
   const el = document.createElement(tagName);
@@ -23,12 +36,15 @@ const renderCategoryListItem = (text) => {
   const li = createElement("li", { class: "category__list-item" });
   const btn = createElement("button", { class: "category__list-btn" }, text);
   btn.addEventListener("click", () => {
-    document.querySelector(".card__loading").style.display = "block";
     productsList.innerHTML = "";
     fetchCategoryProducts(text);
   });
   li.append(btn);
   categoryList.append(li);
+};
+
+const toggleSpinner = (show) => {
+  spinner.style.display = show ? "block" : "none";
 };
 
 const renderProductItem = (productData) => {
@@ -61,14 +77,6 @@ const renderProductItem = (productData) => {
     productData.description
   );
 
-  cardInfoTextDescription.append(cardInfoTextDescriptionSpan);
-  cardInfoText.append(cardInfoTextDescription);
-  cardInfoWrapper.append(cardInfoText);
-  cardInfo.append(cardInfoWrapper);
-  productTitle.append(cardInfo);
-  card.append(productTitle);
-  productsList.append(card);
-
   const cardInfoPrice = createElement(
     "div",
     {
@@ -85,48 +93,47 @@ const renderProductItem = (productData) => {
     `${productData.price}$`
   );
 
-  cardInfoPrice.append(cardInfoPriceSpan);
-  cardInfoText.append(cardInfoPrice);
-
   const cardInfoImg = createElement("div", {
     class: "card__info-img",
   });
   const imgTag = createElement("img", {
     src: productData.image,
   });
+  cardInfoTextDescription.append(cardInfoTextDescriptionSpan);
+  cardInfoText.append(cardInfoTextDescription);
+  cardInfoWrapper.append(cardInfoText);
+  cardInfo.append(cardInfoWrapper);
+  productTitle.append(cardInfo);
+  card.append(productTitle);
+  productsList.append(card);
+  cardInfoPrice.append(cardInfoPriceSpan);
+  cardInfoText.append(cardInfoPrice);
   cardInfoImg.append(imgTag);
   cardInfoWrapper.append(cardInfoImg);
 };
 
 const fetchCategoryProducts = (categoryName) => {
-  fetch(`${CATEGORY_URL}/${categoryName}`)
-    .then((res) => res.json())
-    .then((products) => {
-      // hide loading icon
-      document.querySelector(".card__loading").style.display = "none";
-      products.forEach((product) => {
-        renderProductItem(product);
-      });
-    })
-    .catch(() => {
-      alert("API not working");
+  toggleSpinner(true);
+  request.get(`${CATEGORY_URL}/${categoryName}`).then((products) => {
+    toggleSpinner(false);
+    products.forEach((product) => {
+      renderProductItem(product);
     });
+  });
 };
 
 const init = () => {
-  fetch(ALL_CATEGORIES_URL)
-    .then((res) => res.json())
-    .then((categories) => {
-      if (categories.length) {
-        fetchCategoryProducts(categories[0]);
-        categories.forEach((category) => {
-          renderCategoryListItem(category);
-        });
-      }
-    })
-    .catch(() => {
-      alert("API not working");
+  Promise.all([
+    request.get(ALL_CATEGORIES_URL),
+    request.get(LIMITED_PRODUCTS_URL),
+  ]).then(([categories, products]) => {
+    categories.forEach((category) => {
+      renderCategoryListItem(category);
     });
+    products.forEach((product) => {
+      renderProductItem(product);
+    });
+  });
 };
 
 init();

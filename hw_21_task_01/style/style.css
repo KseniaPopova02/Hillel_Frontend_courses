@@ -36,6 +36,7 @@ body {
 }
 .card__loading {
   text-align: center;
+  display: none;
 }
 .card__header {
   text-align: center;
