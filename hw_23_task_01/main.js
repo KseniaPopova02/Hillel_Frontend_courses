@@ -1,6 +1,11 @@
 const ALL_POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 const ALL_COMMENTS_URL = "https://jsonplaceholder.typicode.com/comments";
 const commentsList = document.querySelector(".comments__list");
+const postTitle = document.querySelector(".post__title");
+const postBody = document.querySelector(".post__body");
+const post = document.querySelector(".post");
+const postFormInput = document.querySelector(".post__form-input");
+const form = document.querySelector(".post__form");
 
 const createElement = (tagName, attributes, text) => {
   const el = document.createElement(tagName);
@@ -17,11 +22,10 @@ const createElement = (tagName, attributes, text) => {
   return el;
 };
 
-const form = document.querySelector(".post__form");
 const renderPost = async (postData) => {
-  document.querySelector(".post__title").innerText = postData.title;
-  document.querySelector(".post__body").innerText = postData.body;
-  document.querySelector(".post").style.display = "block";
+  postTitle.innerText = postData.title;
+  postBody.innerText = postData.body;
+  post.style.display = "block";
   const comments = await fetchPostComments(postData.id);
   commentsList.innerHTML = "";
   comments.forEach((comment) => {
@@ -57,7 +61,6 @@ const searchPostById = async (id) => {
   try {
     const postId = await fetch(`${ALL_POSTS_URL}/${id}`);
     const post = await postId.json();
-    console.log(post);
     renderPost(post);
   } catch (error) {
     console.log(error);
@@ -68,9 +71,12 @@ const searchPostById = async (id) => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  let id = document.querySelector(".post__form-input").value;
-  searchPostById(id);
-  document.querySelector(".post__form-input").value = "";
+  if (postFormInput.value < 0 || postFormInput.value >= 100) {
+    alert("No post founded");
+    return;
+  }
+  searchPostById(postFormInput.value);
+  postFormInput.value = "";
 };
 
 const init = async () => {

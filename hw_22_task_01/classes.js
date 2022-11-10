@@ -6,11 +6,14 @@ class Form {
 
   renderForm = (id, parentEl) => {
     const formEl = createElement("form", { class: "form", id: id });
+
     formEl.addEventListener("submit", this.onSubmit);
+
     this.fields.forEach((field) => {
       const fieldItem = field.create();
       formEl.append(fieldItem);
     });
+
     parentEl.append(formEl);
   };
 }
@@ -82,6 +85,16 @@ class Field {
         type: this.type,
         id: this.id,
       });
+
+      this.options.forEach(option => {
+        const optionElement = createElement("option", {
+          value: option.value,
+        }, option.label);
+
+        select.append(optionElement);
+      });
+
+      div.append(select);
     }
 
     if (this.listeners) {
@@ -147,6 +160,6 @@ class SelectField extends Field {
     spanText = "",
     listeners = null
   ) {
-    super("password", id, labelText, placeHolder, spanText, listeners, options);
+    super("select", id, labelText, placeHolder, spanText, listeners, options);
   }
 }

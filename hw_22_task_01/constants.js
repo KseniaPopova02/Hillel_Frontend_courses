@@ -19,22 +19,14 @@ const checkbox3 = new CheckBoxField(
   "по родному"
 );
 const checkbox4 = new CheckBoxField("checkbox", "", "", "па дамашнему!!!!");
-const select = new SelectField("test", "test", [
+const select = new SelectField("Чий Крим?", "Чий Крим?", [
   {
     value: "1",
-    label: "Option 1",
+    label: "Український",
   },
   {
     value: "2",
-    label: "Option 2",
-  },
-  {
-    value: "3",
-    label: "Option 3",
-  },
-  {
-    value: "4",
-    label: "Option 4",
+    label: "йа умственно атсталій клоун",
   },
 ]);
 
@@ -47,6 +39,7 @@ const form = new Form(
     checkbox2,
     checkbox3,
     checkbox4,
+    select,
   ],
   (e) => {
     e.preventDefault();
