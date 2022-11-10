@@ -1,19 +1,13 @@
 const $window = $(window);
-const modalFade = $(".modal fade");
-
-let isModalShowed = false;
+const modal = new bootstrap.Modal("#exampleModal");
 
 const isShowModal = () => {
-  if ($window.width() <= 768) {
-    if (!isModalShowed) {
-      $("#trigger-button").trigger("click");
-      isModalShowed = true;
-    }
-  } else if ($("body.modal-open")) {
-    $(".modal-header .btn-close").trigger("click");
-    isModalShowed = false;
+  if ($window.width() > 768) {
+    modal.hide();
+    return;
   }
-  console.log(isModalShowed);
+
+  modal.show();
 };
 
 $window.on("resize", function () {
