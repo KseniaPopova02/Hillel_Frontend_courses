@@ -1,0 +1,28 @@
+$h1Color: rgba(45, 236, 70, 0.533);
+
+h1 {
+  color: $h1Color;
+}
+html {
+  font-family: "JetBrains Mono", monospace;
+}
+.cat__img {
+  width: 235px;
+  height: auto;
+}
+
+.gray__cat-img {
+  width: 350px;
+  height: auto;
+}
+.swiper {
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
