@@ -1,0 +1,47 @@
+@import "../styles/normalize.css";
+@font-face {
+  font-family: "Josefin Sans", sans-serif;
+  src: url("../styles/fonts/JosefinSans-Regular.ttf") format("ttf"), url("../styles/fonts/JosefinSans-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans", sans-serif;
+  src: url("../styles/fonts/JosefinSans-Bold.ttf") format("ttf"), url("../styles/fonts/JosefinSans-Bold.ttf") format("ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}/*# sourceMappingURL=app.css.map */
