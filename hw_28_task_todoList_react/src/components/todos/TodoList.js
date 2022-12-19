@@ -70,7 +70,6 @@ class TodoList extends Component {
     if (this.state.value === "") return;
     //creating the todo item
     const item = {
-      id: Math.random(),
       title: this.state.value,
       isDone: false,
     };
@@ -78,9 +77,9 @@ class TodoList extends Component {
     //clearing input
 
     Api.post(API_TODOS_PATH, item)
-      .then(() => {
+      .then((createdItem) => {
         this.setState({
-          todoItems: [...this.state.todoItems, item],
+          todoItems: [...this.state.todoItems, createdItem],
           value: "",
         });
       })
@@ -91,12 +90,14 @@ class TodoList extends Component {
   //clear btn
   handleClearClick = (e) => {
     e.preventDefault();
-    this.state.todoItems.forEach((element) => {
-      Api.delete(API_TODOS_PATH, element.id);
-    });
-
-    this.setState({ todoItems: [] }).catch((error) => {
-      alert("Something went wrong");
+    Promise.all(
+      this.state.todoItems.map((element) =>
+        Api.delete(API_TODOS_PATH, element.id)
+      )
+    ).then(() => {
+      this.setState({ todoItems: [] }).catch((error) => {
+        alert("Something went wrong");
+      });
     });
   };
 
