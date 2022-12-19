@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Api from "../../api/Api";
-import { TODOS } from "../../api/paths";
+import { API_TODOS_PATH } from "../../api/paths";
 import TodoItem from "./TodoItem";
+import Menu from "../Menu/Menu";
 
 const ActionList = styled.ul`
   margin-left: 25px;
@@ -40,43 +41,102 @@ class TodoList extends Component {
     this.state = {
       todoItems: [],
       value: "",
+      type: "all",
     };
   }
+  //function that is changing state of type
+  handleClickOnTabs = (type) => {
+    this.setState({ type: type });
+  };
+  //give tht function to the  menu component as a prop
+  //onclick in the item on the menu call the function
+  //in
 
+  //when element loads on a page it will get todos from the API and save them in the state
   componentDidMount() {
-    Api.get(TODOS).then((items) => this.setState({ todoItems: items }));
-  }
+    Api.get(API_TODOS_PATH).then((items) =>
+      this.setState({ todoItems: items })
+    );
+  } //как только компоненет отрисуется вызовeтся жизненый цикл
+  //for whatching the input changes and save the value to the state
   handleOnChange = (e) => {
     this.setState({ value: e.target.value });
   };
+  //watching the form submit\
+  //checking if input isnt't empty
+
   handleAddSubmit = (e) => {
     e.preventDefault();
     if (this.state.value === "") return;
+    //creating the todo item
     const item = {
       id: Math.random(),
       title: this.state.value,
       isDone: false,
     };
-    this.setState({ todoItems: [...this.state.todoItems, item], value: "" });
+    //setting the state from line 61
+    //clearing input
+
+    Api.post(API_TODOS_PATH, item)
+      .then(() => {
+        this.setState({
+          todoItems: [...this.state.todoItems, item],
+          value: "",
+        });
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+      });
   };
+  //clear btn
   handleClearClick = (e) => {
     e.preventDefault();
+    this.state.todoItems.forEach((element) => {
+      Api.delete(API_TODOS_PATH, element.id);
+    });
 
-    this.setState({ todoItems: [] });
+    this.setState({ todoItems: [] }).catch((error) => {
+      alert("Something went wrong");
+    });
   };
 
-  handleCheck = (id) => {
-    const newTodoItems = this.state.todoItems.map((item) => {
-      if (id === item.id) {
-        item.isDone = !item.isDone;
-      }
-      return item;
+  //delete btn
+  handleDeleteClick = (id) => {
+    Api.delete(API_TODOS_PATH, id)
+      .then(() => {
+        const newTodoItems = this.state.todoItems.filter((el) => {
+          if (id === el.id) {
+            return false;
+          }
+          return true;
+        });
+        this.setState({
+          todoItems: newTodoItems,
+        });
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+      });
+  };
+  //to handle the check and change the is done value
+  handleCheck = (id, checked) => {
+    Api.patch(API_TODOS_PATH, id, { isDone: checked }).then(() => {
+      const newTodoItems = this.state.todoItems.map((item) => {
+        if (id === item.id) {
+          return { ...item, isDone: checked };
+        }
+        return item;
+      });
+      this.setState({ todoItems: newTodoItems });
     });
-    this.setState({ todoItems: newTodoItems });
   };
   render() {
     return (
       <div>
+        <Menu
+          currentType={this.state.type}
+          changeTypeFunction={this.handleClickOnTabs}
+        />
         <InputWrapper onSubmit={this.handleAddSubmit}>
           <InputText
             onChange={this.handleOnChange}
@@ -87,9 +147,24 @@ class TodoList extends Component {
           <Button onClick={this.handleClearClick}>Clear</Button>
         </InputWrapper>
         <ActionList>
-          {this.state.todoItems.map((item) => (
-            <TodoItem data={item} checkedFunction={this.handleCheck} />
-          ))}
+          {this.state.todoItems.map((item) => {
+            //check type in state and isDone of items
+            if (
+              (this.state.type === "inprogress" && item.isDone) ||
+              (this.state.type === "completed" && !item.isDone)
+            ) {
+              return;
+            }
+
+            //props named as checkedFunction it will = function handleCheck
+            return (
+              <TodoItem
+                data={item}
+                checkedFunction={this.handleCheck}
+                deleteFunction={this.handleDeleteClick}
+              />
+            );
+          })}
         </ActionList>
       </div>
     );
@@ -97,5 +172,3 @@ class TodoList extends Component {
 }
 
 export default TodoList;
-
-//доделать чекбоксы и кнопка удаления и стили и статус тудушки

@@ -1,6 +1,8 @@
 import TodoList from "./components/todos/TodoList";
+import Header from "./components/Header/Header";
 import { Component } from "react";
 import styled from "styled-components";
+
 import "../src/styles/app.css";
 
 const Container = styled.div`
@@ -20,6 +22,7 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <Header />
         <ToDoListWrapper>
           <TodoList />
         </ToDoListWrapper>
