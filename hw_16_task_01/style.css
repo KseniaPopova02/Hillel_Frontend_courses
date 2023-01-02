@@ -7,16 +7,43 @@ body {
   font-size: 24px;
 }
 
+.container {
+  max-width: 80vw;
+}
+
 .form__wrapper {
+  display: flex;
+}
+
+form {
   max-width: 236px;
   border: 2px solid #000;
   border-radius: 8px;
   padding: 10px;
+  margin: 20px;
 }
 
-input {
+input,
+.clear {
   margin-bottom: 15px;
   border-radius: 8px;
   border: 2px solid #000;
   padding: 5px 10px;
+}
+
+table {
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+tr {
+  font-weight: bold;
+  padding: 5px;
+  background: #efefef;
+  border: 1px solid #000;
+}
+td {
+  border: 1px solid #000;
+  padding: 5px;
 }

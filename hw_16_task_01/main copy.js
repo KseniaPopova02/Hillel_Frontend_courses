@@ -1,8 +1,7 @@
 //function constructions
-function Person(name, surname, age, telephoneNum) {
+function Person(name, surname, telephoneNum) {
   this.name = name;
   this.surname = surname;
-  this.age = age;
   this.telephoneNum = telephoneNum;
   this.cars = [];
   this.addCar = (car) => {
@@ -31,10 +30,8 @@ let carForm,
   listPersonInfo;
 
 const createPerson = (name, surname, age, tel) => {
-  personInfo = new Person(name, surname, age, tel);
+  let personInfo = new Person(name, surname, age, tel);
   console.log(personInfo);
-
-  renderList();
 };
 
 const createCar = (brand, color, year) => {
@@ -51,12 +48,7 @@ const addToPersonList = () => {
     personTextTel.value === ""
   )
     return;
-  createPerson(
-    personTextName.value,
-    personTextSurname.value,
-    personTextAge.value,
-    personTextTel.value
-  );
+  createPerson(carTextBrand.value, carTextColor.value, carTextYear.value);
   personTextName.value = "";
   personTextSurname.value = "";
   personTextAge.value = "";
@@ -78,18 +70,12 @@ const addToCarList = () => {
 
 //Render list
 const renderList = () => {
-  listPersonInfo.innerHTML = "";
-
   toLocalStorage();
-
-  if (personInfo) {
-    const td = document.createElement("td");
-    td.className = "td";
-    td.innerText = personInfo.name;
-    td.innerText = personInfo.surname;
-    td.innerText = personInfo.age;
-    td.innerText = personInfo.tel;
-    listPersonInfo.appendChild(td);
+  const td = document.createElement("td");
+  td.className = "td";
+  listPersonInfo.appendChild(td);
+  if (personInfoSubmit == true) {
+    
   }
 };
 
@@ -127,15 +113,15 @@ window.addEventListener("DOMContentLoaded", () => {
   personTextSurname = document.querySelector("#lname");
   personTextAge = document.querySelector("#age");
   personTextTel = document.querySelector("#tel");
-  listPersonInfo = document.querySelector(".list__personInfo");
+  listPersonInfo = document.querySelector(".listPersonInfo");
 
   let personFormSubmit = personForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    addToPersonList();
+    addToCarList();
   });
 
   carForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    addToCarList();
+    addToPersonList();
   });
 });

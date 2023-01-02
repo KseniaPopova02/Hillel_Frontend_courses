@@ -48,9 +48,8 @@ class TodoList extends Component {
   handleClickOnTabs = (type) => {
     this.setState({ type: type });
   };
-  //give tht function to the  menu component as a prop
+  //give the function to the menu component as a prop
   //onclick in the item on the menu call the function
-  //in
 
   //when element loads on a page it will get todos from the API and save them in the state
   componentDidMount() {
@@ -58,6 +57,7 @@ class TodoList extends Component {
       this.setState({ todoItems: items })
     );
   } //как только компоненет отрисуется вызовeтся жизненый цикл
+  
   //for whatching the input changes and save the value to the state
   handleOnChange = (e) => {
     this.setState({ value: e.target.value });

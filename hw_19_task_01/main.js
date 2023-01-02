@@ -45,8 +45,6 @@ const render = (data) => {
     ".weatherRight__icon"
   ).innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>`;
 
-  // const iconUrl = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>`;
-  // renderWeatherField(".weatherRight__icon", iconUrl);
   renderWeatherField(
     ".weatherRight__temperature-span",
     `${Math.ceil(data.main.temp)}°С`

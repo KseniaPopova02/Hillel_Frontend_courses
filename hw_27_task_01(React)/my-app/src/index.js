@@ -9,4 +9,4 @@ root.render(
   </React.StrictMode>
 );
 
-//С помощью npm run build можно закомитить проект на гит хаб
+
