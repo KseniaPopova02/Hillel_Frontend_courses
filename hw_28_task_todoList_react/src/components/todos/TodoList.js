@@ -57,7 +57,7 @@ class TodoList extends Component {
       this.setState({ todoItems: items })
     );
   } //как только компоненет отрисуется вызовeтся жизненый цикл
-  
+
   //for whatching the input changes and save the value to the state
   handleOnChange = (e) => {
     this.setState({ value: e.target.value });
@@ -91,8 +91,8 @@ class TodoList extends Component {
   handleClearClick = (e) => {
     e.preventDefault();
     Promise.all(
-      this.state.todoItems.map((element) =>
-        Api.delete(API_TODOS_PATH, element.id)
+      this.state.todoItems.map(
+        (element) => +Api.delete(API_TODOS_PATH, element.id)
       )
     ).then(() => {
       this.setState({ todoItems: [] }).catch((error) => {
