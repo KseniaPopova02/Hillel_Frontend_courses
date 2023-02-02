@@ -1,6 +1,7 @@
 import React from "react";
 import { changeTabs } from "../../actions/todosActions";
 import { useDispatch } from "react-redux";
+import { Button } from "@mui/material";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ const Menu = () => {
 
   return (
     <div>
-      <button onClick={handleClickOnTabs("ALL")}>ALL</button>
-      <button onClick={handleClickOnTabs("IN_PROGRESS")}>IN PROGRESS</button>
-      <button onClick={handleClickOnTabs("COMPLETED")}>COMPLETED</button>
+      <Button onClick={handleClickOnTabs("ALL")}>ALL</Button>
+      <Button onClick={handleClickOnTabs("IN_PROGRESS")}>IN PROGRESS</Button>
+      <Button onClick={handleClickOnTabs("COMPLETED")}>COMPLETED</Button>
     </div>
   );
 };

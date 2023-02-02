@@ -9,10 +9,9 @@ import {
   deleteTodo,
   toggleTodo,
 } from "../../actions/todosActions";
+import { Button, TextField } from "@mui/material";
 
 const InputWrapper = styled.form``;
-const InputText = styled.input``;
-const Button = styled.button``;
 const ActionList = styled.ul``;
 
 const TodoList = () => {
@@ -67,7 +66,13 @@ const TodoList = () => {
     <>
       <Menu />
       <InputWrapper onSubmit={handleAddSubmit}>
-        <InputText onChange={handleOnChange} value={value} type="text" />
+        <TextField
+          id="outlined-basic"
+          label="todo"
+          onChange={handleOnChange}
+          value={value}
+          type="text"
+        />
         <Button type="submit">Add</Button>
         <Button onClick={handleClearSubmit} type="button">
           Clear

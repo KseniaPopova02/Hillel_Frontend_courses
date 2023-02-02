@@ -1,8 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "@mui/material";
 
-const Li = styled.li``;
-const Div = styled.div``;
+const Li = styled.li`
+  margin: 15px 0;
+`;
+const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Text = styled.span`
+  font-weight: bold;
+  font-size: 20px;
+`;
 
 const TodoItem = ({ children, isDone, id, handleDelete, toggleStatus }) => {
   const onDelete = () => {
@@ -16,12 +27,15 @@ const TodoItem = ({ children, isDone, id, handleDelete, toggleStatus }) => {
     <Li>
       <Div>
         <input
+          color="default"
           checked={isDone}
           onChange={toggleCheckbox}
           type="checkbox"
         ></input>
-        <span>{children}</span>
-        <button onClick={onDelete}>Delete</button>
+        <Text>{children}</Text>
+        <Button variant="contained" onClick={onDelete}>
+          Delete
+        </Button>
       </Div>
     </Li>
   );
